@@ -1,0 +1,100 @@
+/* Reset and Container */
+:root {
+  background-color: #212121;
+  color: white;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ececec;
+}
+
+/* Chat Window */
+.chat-window {
+  flex: 1;
+  background-color: #2f2f2f;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #424242;
+}
+
+/* Bubbles */
+.message {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #0084ff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.ai {
+  align-self: flex-start;
+  background-color: #3e3e3e;
+  color: #ececec;
+  border-bottom-left-radius: 4px;
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+input {
+  flex: 1;
+  background-color: #3e3e3e;
+  border: 1px solid #424242;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  outline: none;
+}
+
+input:focus {
+  border-color: #0084ff;
+}
+
+button {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #0073e6;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
