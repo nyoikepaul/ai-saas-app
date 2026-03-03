@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI SaaS App • Python-Powered AI Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Courier New', monospace; }
+    .terminal { background: #0a0a0a; border: 3px solid #a855f7; box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
+    .output { color: #d8b4fe; animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <!-- Hero -->
+    <div class="text-center mt-16">
+      <h1 class="text-6xl font-bold text-purple-400 tracking-tighter">🤖 AI SAAS APP</h1>
+      <p class="text-2xl mt-4 text-zinc-400">Pure Python • AI-Powered Tools • Deploy + Scale in Minutes</p>
+      <p class="text-xl mt-2 text-purple-500">Perfect for Kenyan devs & startups</p>
+    </div>
+
+    <!-- One-click Install -->
+    <div class="mt-12 flex justify-center">
+      <button onclick="copyInstall()" 
+              class="bg-purple-500 hover:bg-purple-600 text-black font-bold text-xl px-12 py-6 rounded-3xl flex items-center gap-3 transition-all active:scale-95">
+        <i class="fas fa-download"></i>
+        ONE-CLICK INSTALL (Free Version)
+      </button>
+    </div>
+    <p id="copyMsg" class="text-center text-purple-400 mt-4 text-sm hidden font-bold">✅ Command copied! Paste in your terminal now.</p>
+
+    <!-- Live Demo Terminal -->
+    <div class="mt-16">
+      <h2 class="text-3xl font-bold text-center mb-6 text-purple-400">Try it LIVE in your browser</h2>
+      <div id="demoTerminal" class="terminal rounded-3xl p-8 text-purple-400 text-base max-w-2xl mx-auto h-96 overflow-hidden flex flex-col">
+        <div class="flex items-center gap-2 mb-6">
+          <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+          <span class="ml-4 text-zinc-500 text-sm">main.py — ai-saas-app</span>
+        </div>
+        <div id="terminalOutput" class="flex-1 font-mono text-sm overflow-y-auto leading-relaxed"></div>
+        <div class="flex gap-3 mt-6 flex-wrap">
+          <button onclick="runDemo(0)" class="px-6 py-3 bg-zinc-900 hover:bg-purple-900 rounded-xl text-xs transition">Generate Text</button>
+          <button onclick="runDemo(1)" class="px-6 py-3 bg-zinc-900 hover:bg-purple-900 rounded-xl text-xs transition">Image AI</button>
+          <button onclick="runDemo(2)" class="px-6 py-3 bg-zinc-900 hover:bg-purple-900 rounded-xl text-xs transition">Chat Bot</button>
+          <button onclick="runDemo(3)" class="px-6 py-3 bg-zinc-900 hover:bg-purple-900 rounded-xl text-xs transition">Analyze Data</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+      <div class="bg-zinc-900 p-8 rounded-3xl border border-purple-900 hover:border-purple-400 transition">
+        <i class="fas fa-robot text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-2xl font-bold">AI Generation</h3>
+        <p class="text-zinc-400 mt-2">Text, images, & more with smart APIs</p>
+      </div>
+      <div class="bg-zinc-900 p-8 rounded-3xl border border-purple-900 hover:border-purple-400 transition">
+        <i class="fas fa-shield-alt text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-2xl font-bold">Secure & Scalable</h3>
+        <p class="text-zinc-400 mt-2">Python backend + cloud-ready</p>
+      </div>
+      <div class="bg-zinc-900 p-8 rounded-3xl border border-purple-900 hover:border-purple-400 transition">
+        <i class="fas fa-bell text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-2xl font-bold">Integrations</h3>
+        <p class="text-zinc-400 mt-2">Easy API hooks + real-time alerts</p>
+      </div>
+    </div>
+
+    <!-- Pro CTA -->
+    <div class="mt-20 text-center bg-gradient-to-r from-purple-950 to-zinc-900 border border-purple-500 rounded-3xl p-12">
+      <h3 class="text-4xl font-bold">AI SaaS App <span class="text-purple-400">Pro</span></h3>
+      <p class="text-2xl mt-4">KSh 1,099/month • Commercial license + advanced AI models + priority support</p>
+      <a href="https://paulnyoike.carrd.co" target="_blank" 
+         class="inline-block mt-8 bg-purple-500 hover:bg-purple-600 text-black font-bold px-12 py-5 rounded-3xl text-xl transition">
+        Get Pro Now →
+      </a>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="https://github.com/nyoikepaul/ai-saas-app" target="_blank" class="text-zinc-500 hover:text-purple-400 text-lg">⭐ View full source on GitHub</a>
+    </div>
+  </div>
+
+  <script>
+    const commands = [
+      { cmd: "python main.py generate --prompt 'Write a story'", out: "✅ AI Output: Once upon a time... [full story generated]\n⏱️ Time: 5s" },
+      { cmd: "python main.py image --prompt 'Futuristic city'", out: "🚀 Image generated\n✅ URL: https://ai-image.com/city.jpg\n🖼️ Resolution: 1024x1024" },
+      { cmd: "python main.py chat --message 'Hello AI'", out: "🤖 Response: Hi there! How can I assist you today?\n📡 Session active" },
+      { cmd: "python main.py analyze --file data.csv", out: "📊 Analysis complete\n✅ Insights: Trends detected, report saved\n🗄️ Data points: 1000+" }
+    ];
+
+    function typeWriter(element, text, speed = 20) {
+      element.innerHTML = '';
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    function runDemo(index) {
+      const output = document.getElementById('terminalOutput');
+      output.innerHTML = `<span class="text-purple-400">$ ${commands[index].cmd}</span><br><br>`;
+      const outDiv = document.createElement('div');
+      outDiv.className = 'output';
+      output.appendChild(outDiv);
+      typeWriter(outDiv, commands[index].out);
+    }
+
+    function copyInstall() {
+      const cmd = `git clone https://github.com/nyoikepaul/ai-saas-app.git && cd ai-saas-app && pip install -r requirements.txt && python main.py`;
+      try {
+        navigator.clipboard.writeText(cmd).then(() => {
+          const msg = document.getElementById('copyMsg');
+          msg.classList.remove('hidden');
+          setTimeout(() => msg.classList.add('hidden'), 4000);
+        });
+      } catch(e) {
+        alert("✅ Command copied manually:\n\n" + cmd);
+      }
+    }
+
+    // Auto-run first demo
+    setTimeout(() => runDemo(0), 600);
+  </script>
+</body>
+</html>
